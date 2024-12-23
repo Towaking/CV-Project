@@ -70,7 +70,7 @@ def process_image(image, apply_rotation=True):
                         cv2.rectangle(image, (x1, y1), (x2, y2), (255, 0, 0), 4)
                         cv2.putText(image, f"{license_plate_number.upper()}", 
                                     (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, 
-                                    (255, 0, 0), 1)
+                                    (255, 0, 0), 2)
 
     return image
 
