@@ -6,7 +6,7 @@ import easyocr
 from PIL import Image
 
 model = YOLO(r"./train48/weights/best.pt") 
-reader = easyocr.Reader(['en'])
+reader = easyocr.Reader(['id'])
 
 def correct_image_rotation(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
