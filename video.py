@@ -13,30 +13,30 @@ def correct_image_rotation(image):
     edges = cv2.Canny(gray, 50, 150, apertureSize=3)
     lines = cv2.HoughLines(edges, 1, np.pi / 180, 200)
     
-    if lines is not None:
-        angles = []
-        for rho, theta in lines[:, 0]:
-            angle = np.degrees(theta) - 90
-            angles.append(angle)
+    # if lines is not None:
+    #     angles = []
+    #     for rho, theta in lines[:, 0]:
+    #         angle = np.degrees(theta) - 90
+    #         angles.append(angle)
         
-        median_angle = 90
+    #     median_angle = 90
         
-        center = tuple(np.array(image.shape[1::-1]) / 2)  # Calculate the center of the image
+    #     center = tuple(np.array(image.shape[1::-1]) / 2)  # Calculate the center of the image
         
-        M = cv2.getRotationMatrix2D(center, -median_angle, 1.0)
+    #     M = cv2.getRotationMatrix2D(center, -median_angle, 1.0)
         
-        abs_cos = abs(M[0, 0])
-        abs_sin = abs(M[0, 1])
+    #     abs_cos = abs(M[0, 0])
+    #     abs_sin = abs(M[0, 1])
         
-        bound_w = int(image.shape[1] * abs_cos + image.shape[0] * abs_sin)
-        bound_h = int(image.shape[1] * abs_sin + image.shape[0] * abs_cos)
+    #     bound_w = int(image.shape[1] * abs_cos + image.shape[0] * abs_sin)
+    #     bound_h = int(image.shape[1] * abs_sin + image.shape[0] * abs_cos)
         
-        M[0, 2] += bound_w / 2 - center[0]
-        M[1, 2] += bound_h / 2 - center[1]
+    #     M[0, 2] += bound_w / 2 - center[0]
+    #     M[1, 2] += bound_h / 2 - center[1]
         
-        rotated_image = cv2.warpAffine(image, M, (bound_w, bound_h), flags=cv2.INTER_CUBIC)
+    #     rotated_image = cv2.warpAffine(image, M, (bound_w, bound_h), flags=cv2.INTER_CUBIC)
         
-        return rotated_image
+    #     return rotated_image
     
     return image
 
