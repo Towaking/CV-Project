@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import easyocr
 from PIL import Image
 
-model = YOLO(r"./yolov11(2)_license_plate.pt")  
+model = YOLO(r"./yolov11(2)_license_plate.pt") 
 reader = easyocr.Reader(['en'])
 
 def correct_image_rotation(image):
