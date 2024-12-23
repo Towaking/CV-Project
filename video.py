@@ -45,7 +45,7 @@ def process_image(image, apply_rotation=True):
         image = correct_image_rotation(image)
     results = model(image)
 
-    license_plate_label = "license-plate"  
+    license_plate_label = "0"  
     confidence_threshold = 0.5  
 
     if license_plate_label in model.names.values():
